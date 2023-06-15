@@ -15,9 +15,23 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.ListarPartidos = BD.ListarPartidos();
         return View();
     }
-
+    public IActionResult VerDetallePartido(int IdPartido){
+        ViewBag.Detalles = BD.VerInfoPartido(IdPartido);
+        ViewBag.Candidatos = BD.ListarCandidatos(IdPartido);    
+        return View("DetallePartido"+IdPartido);
+    }
+    public IActionResult VerDetalleCandidato(int IdCandidato){
+        ViewBag.DetalleCandidato = BD.VerInfoCandidato(IdCandidato);
+        return View("DetalleCandidato"+IdCandidato);
+    }
+    public IActionResult AgregarCandidato(int idPartido, Candidato can){
+        ViewBag.IdPartido = idPartido;
+        BD.AgregarCandidatos(can);
+        return View("FormularioAdd");
+    }
     public IActionResult Privacy()
     {
         return View();

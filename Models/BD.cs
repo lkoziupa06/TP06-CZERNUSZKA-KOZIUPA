@@ -45,11 +45,11 @@ public static class BD{
         }
         return listaPartidos;
     }
-        public static List<Candidato> ListarCandidatos(){
+        public static List<Candidato> ListarCandidatos(int IdPartido){
         List<Candidato> listaCandidatos = null;
         using(SqlConnection BD = new SqlConnection(_connectionString)){
-            string sql = "SELECT * FROM Candidatos";
-            listaCandidatos = BD.Query<Candidato>(sql).ToList();
+            string sql = "SELECT * FROM Candidatos WHERE IdPartido = @pIdPartido";
+            listaCandidatos = BD.Query<Candidato>(sql, new{pIdPartido = IdPartido}).ToList();
         }
         return listaCandidatos;
     }
