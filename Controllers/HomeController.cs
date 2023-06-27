@@ -15,7 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewBag.ListarPartidos = BD.ListarPartidos();
+        ViewBag.ListaPartidos = BD.ListarPartidos();
         return View();
     }
     public IActionResult VerDetallePartido(int IdPartido){
@@ -43,6 +43,12 @@ public class HomeController : Controller
         ViewBag.Detalles = BD.VerInfoPartido(IdPartido);
         ViewBag.Candidatos = BD.ListarCandidatos(IdPartido); 
         return View("DetallePartido"+IdPartido);
+    }
+    public IActionResult Elecciones(){
+        return View();
+    }
+    public IActionResult Creditos(){
+        return View();
     }
     public IActionResult Privacy()
     {
