@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+.partidos{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,25 @@
+<div class="mt-4 p-5 bg-secondary text-white rounded">
+    <div class="align-content-center">
+        <h1 class="">@ViewBag.Detalles.Nombre</h1>
+        <img src="/img/@ViewBag.Detalles.Logo" class="" alt="" style="height:300px;text-align: center;">
+    </div>
+    <div class="align-content-center">
+        @{
+            string fecha = ViewBag.Detalles.FechaFundacion.ToShortDateString();
+        }
+        <h3>El partido fue fundado el @fecha</h3>
+        <a href="@ViewBag.Detalles.SitioWeb">Pagina Web</a>
+    </div>
+    <div class = "candidatos">
+        @foreach (Candidato item in @ViewBag.Candidatos)
+        {
+        <div class="card" style="width:20rem;margin:20p6x 0 24px 0; padding:20px;">
+            <img class="card-img-top" src="/img/@item.Foto" alt="image" style="width:100%;height:137px;">
+            <div class="card-body">
+                <h4 class="card-title">@item.Nombre @item.Apellido</h4>
+                <a href = '@Url.Action("VerDetalleCandidato","Home",new {IdPartido = item.IdPartido})' class="btn btn-primary" style="display:flex; justify-content:center;">Detalle Candidato</a>
+            </div>
+        </div>
+        }
+    </div>
+</div>  
