@@ -29,20 +29,20 @@ public class HomeController : Controller
     }
     public IActionResult AgregarCandidato(int idPartido){
         ViewBag.IdPartido = idPartido;
-        return View("FormularioAdd");
+        return View("AgregarCandidato");
     }
     [HttpPost]
     public IActionResult GuardarCandidato(Candidato can){
         BD.AgregarCandidatos(can);
         ViewBag.Detalles = BD.VerInfoPartido(can.IdPartido);
         ViewBag.Candidatos = BD.ListarCandidatos(can.IdPartido); 
-        return View("DetallePartido"+can.IdPartido);
+        return View("DetallePartido");
     }
     public IActionResult EliminarCandidato(int IdCandidato, int IdPartido){
         BD.EliminarCandidato(IdCandidato);
         ViewBag.Detalles = BD.VerInfoPartido(IdPartido);
         ViewBag.Candidatos = BD.ListarCandidatos(IdPartido); 
-        return View("DetallePartido"+IdPartido);
+        return View("DetallePartido");
     }
     public IActionResult Elecciones(){
         return View();
